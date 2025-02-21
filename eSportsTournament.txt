@@ -1,0 +1,80 @@
+eSportsTournament
+src
+	tournament
+		main
+		data
+		comparators
+		execptions
+public abstract class Tournament{
+	String name;
+	String associatedGame;
+	double price;
+	getters & setters;
+	constructor with parameters;
+	method toString(); --> Only with name
+}
+public class IndividualTournament extends Tournament{
+
+}
+
+public class TeamTournament extends Tournament{
+	String playersPerTeam;
+}
+
+public class MixedTournament extends Tournament{
+	String gameMode;--> "1vs1" or "5vs5"
+}
+
+public abstract class Participant{
+	String name;
+}
+
+public class Player extends Participant{
+	int level; (between 1 and 100)
+	ranking; (flloating-point number representing their score)
+	constructor Player()--> super name ... level, ranking;
+	toString() --> 	"Player: " + getName() + " - Level: " + level + " - Ranking: " + ranking; 
+}
+
+public class Team extends Participant{
+	Player[] players;
+	int playerCount;
+
+	getters & setters();
+	public Team(){} constructor with all parameters.
+	public void AddPlayer(Player playerP){
+		if(playerCount < 5 ){
+			players[playerCount++] = playerP;
+		}
+		else{
+			throw new FullTeamException("The team is already full.");
+		}
+	}
+
+	method toString(){ 
+		StringBuilder sb = new StringBuilder("Team " + getName() + " - Members: " + playerCount + "/5:\n");
+        	for (int i = 0; i < playerCount; i++) {
+            	sb.append("- ").append(players[i].toString()).append("\n");
+        	}
+        return sb.toString();
+	}
+}
+
+public class Match{
+	
+	Patricipant participant1;
+	Patricipant participant2;
+	String result; --> Default value("Pending");
+	
+	setResult(String result){
+		this.result = result;
+	}
+	method toString(){
+		return "Match in " + tournament + " - " + participant1.getName() + " vs. " + participant2.getName() + " - Result: " + result;
+	}
+}
+
+
+
+
+
