@@ -4,14 +4,14 @@
  */
 package tournament.main;
 import tournament.Exceptions.FullTeamException;
+import tournament.data.MixedTournament;
 import tournament.data.Tournament;
 
 public class Main {
     public static void main(String[] args) throws FullTeamException {
 //        Tournament[] tournaments = new Tournament[3];
-//        tournaments[0] = new Tournament("AntiSnipers", "Black opps II",23.98);
-//        tournaments[1] = new Tournament("ReDoX", "Rocket League",1.50);
-//        tournaments[2] = new Tournament("ArtiCS", "Rocket League",3.98);
+//        tournaments[0] = new MixedTournament("Coxiex","PokiCox",1.25,"POKÉMON");
+//
 //        for( int i = 0; i< tournaments.length;i++){
 //            System.out.print(tournaments[i]);
 //        }
