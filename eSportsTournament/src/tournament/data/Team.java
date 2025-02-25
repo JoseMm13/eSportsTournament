@@ -2,13 +2,35 @@ package tournament.data;
 
 public class Team extends Participant{
     Player [] player;
+    int playerCount;
+
     /**
-     * Constructor Participant
-     *
-     * @param name
+     * Getters Array Player and playerCount
+     * @return
      */
-    public Team(String name)
-    {
-        super(name);
+    public Player[] getPlayer() {
+        return player;
     }
+    public int getPlayerCount() {
+        return playerCount;
+    }
+    public void setPlayer(Player[] player) {
+        this.player = player;
+    }
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
+    }
+
+    /**
+     * Constructor with parameters
+     * @param name
+     * @param player
+     * @param playerCount
+     */
+    public Team(String name, Player[] player, int playerCount) {
+        super(name);
+        this.player = player;
+        this.playerCount = playerCount;
+    }
+
 }
