@@ -19,4 +19,16 @@ public abstract class Participant {
         this.name = name;
     }
 
+    /**
+     * Constructor Participant
+     * @param name
+     */
+    public Participant(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Participants: " +"\n"+ "Name " + name;
+    }
 }
