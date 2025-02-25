@@ -1,5 +1,9 @@
 package tournament.data;
 
+import tournament.Exceptions.FullTeamException;
+
+import java.lang.reflect.Method;
+
 public class Team extends Participant{
     Player [] player;
     int playerCount;
@@ -32,5 +36,22 @@ public class Team extends Participant{
         this.player = player;
         this.playerCount = playerCount;
     }
-
+    public void AddPlayer(Player player) throws FullTeamException {
+        if (playerCount < this.player.length)
+        {
+            this.player[playerCount++] = player;
+        }
+        else
+        {
+            throw new FullTeamException("The team is already full.");
+        }
+    }
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("Team " + getName() + " - Members: " + playerCount + "/5:\n");
+        for(int i=0;i<playerCount;i++){
+            sb.append("- ").append(player[i].toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }
