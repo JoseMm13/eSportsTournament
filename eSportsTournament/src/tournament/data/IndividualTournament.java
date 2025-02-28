@@ -17,10 +17,6 @@ public class IndividualTournament extends Tournament{
      */
     @Override
     public String toString() {
-        return "IndividualTournament{" +
-                "name='" + name + '\'' +
-                ", associatedGame='" + associatedGame + '\'' +
-                ", price=" + price +
-                '}';
+        return "IndividualTournament - "+ name  + " - " + associatedGame + " - Price: " + price +"€";
     }
 }

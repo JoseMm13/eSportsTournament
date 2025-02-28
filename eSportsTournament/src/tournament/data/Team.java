@@ -36,7 +36,13 @@ public class Team extends Participant{
         this.player = player;
         this.playerCount = playerCount;
     }
-    public void AddPlayer(Player player) throws FullTeamException {
+
+    /**
+     *
+     * @param player
+     * @throws FullTeamException
+     */
+    public void addPlayer(Player player) throws FullTeamException {
         if (playerCount < this.player.length)
         {
             this.player[playerCount++] = player;
@@ -46,9 +52,14 @@ public class Team extends Participant{
             throw new FullTeamException("The team is already full.");
         }
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder("Team " + getName() + " - Members: " + playerCount + "/5:\n");
+        StringBuilder sb = new StringBuilder("Team: " + getName() + " - Members: " + playerCount + "/5:\n");
         for(int i=0;i<playerCount;i++){
             sb.append("- ").append(player[i].toString()).append("\n");
         }

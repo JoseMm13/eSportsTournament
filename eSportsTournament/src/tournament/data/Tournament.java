@@ -56,7 +56,7 @@ public abstract class Tournament {
     @Override
     public String toString() {
         return "Tournament: " +"\n" +
-                "Name='" + name + '\'' + ", Associated Game= '" + associatedGame + '\'' + ", Price Inscription= " +
+                "Name: " + name  + " - Associated Game: '" + associatedGame + " - Price Inscription= " +
                 price + '€'+ "\n";
     }
 }

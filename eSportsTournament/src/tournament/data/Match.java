@@ -1,7 +1,7 @@
 package tournament.data;
 
 public class Match {
-    String tournament;
+    Tournament tournament;
     Participant participant1;
     Participant participant2;
     String result;
@@ -10,7 +10,7 @@ public class Match {
      * Getters
      * @return
      */
-    public String getTournament() {
+    public Tournament getTournament() {
         return tournament;
     }
     public Participant getParticipant1() {
@@ -26,7 +26,7 @@ public class Match {
      * Setters
      * @param tournament
      */
-    public void setTournament(String tournament) {
+    public void setTournament(Tournament tournament) {
         this.tournament = tournament;
     }
     public void setParticipant1(Participant participant1) {
@@ -46,20 +46,24 @@ public class Match {
      * @param participant2
      * @param result
      */
-    public Match(String tournament, Participant participant1, Participant participant2, String result) {
+    public Match(Tournament tournament, Participant participant1, Participant participant2, String result) {
         this.tournament = tournament;
         this.participant1 = participant1;
         this.participant2 = participant2;
         this.result = "Pending.";
     }
 
+    /**
+     * Method toString
+     * @return
+     */
     @Override
     public String toString() {
-        return "Match{" +
-                "tournament='" + tournament + '\'' +
-                ", participant1=" + participant1 +
-                ", participant2=" + participant2 +
-                ", result='" + result + '\'' +
-                '}';
+        return "Match:" + "\n" +
+                "Tournament: " + tournament + ". \n" +
+                " Participant1: " + participant1 + ". \n" +
+                " Participant2:" + participant2 + ". \n" +
+                ", result='" + result +".";
     }
+
 }

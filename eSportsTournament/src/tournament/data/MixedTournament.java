@@ -21,11 +21,7 @@ public class MixedTournament extends Tournament{
      */
     @Override
     public String toString() {
-        return "MixedTournament{" +
-                "gameMode='" + gameMode + '\'' +
-                ", name='" + name + '\'' +
-                ", associatedGame='" + associatedGame + '\'' +
-                ", price=" + price +
-                '}';
+        return "MixedTournament - " + "GameMode: " + gameMode + "- Name: " + name +
+                " - Associated Game: " + associatedGame + " - Price: " + price+"€";
     }
 }

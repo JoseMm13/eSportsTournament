@@ -10,11 +10,10 @@ public class TeamTournament extends Tournament{
 
     @Override
     public String toString() {
-        return "MixedTournament{" +
+        return "MixedTournament" +
                 "playersPerTeam='" + playersPerTeam + '\'' +
-                ", name='" + name + '\'' +
-                ", associatedGame='" + associatedGame + '\'' +
-                ", price=" + price +
-                '}';
+                "- Name: '" + name + '\'' +
+                "- AssociatedGame: '" + associatedGame + '\'' +
+                "- Price: " + price +"€";
     }
 }

@@ -1,13 +1,19 @@
 package tournament.data;
+import tournament.comparators.PlayerRankingComparator;
+import tournament.comparators.TournamentNameComparator;
+
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class TournamentManager
 {
     Random r = new Random();
     int numrandom = r.nextInt(11);
 
-    Player [] registredPlayers = new Player[10];
-    Team [] registeredTeams = new Team[5];
+    public Player [] registredPlayers = new Player[10];
+    public Team [] registeredTeams = new Team[5];
     Tournament [] tournaments = new Tournament[3];
     Match [] matches = new Match[numrandom];
 
@@ -52,7 +58,7 @@ public class TournamentManager
          */
         for(int i=0;i< matches.length;i++)
         {
-            matches[i] = new Match("RandomTournament", registredPlayers[i % registredPlayers.length],
+            matches[i] = new Match(tournaments[i % tournaments.length], registredPlayers[i % registredPlayers.length],
                     registredPlayers[(i + 1) % registredPlayers.length], "Pending");
         }
     }
@@ -100,22 +106,24 @@ public class TournamentManager
     /**
      * Displays all players sorted by their ranking in descending order.
      */
-    /*public void showPlayerRanking() {
-        Arrays.sort(registredPlayers, Comparator.comparingDouble(Player::getRanking).reversed());
+    public void showPlayerRanking() {
+        Arrays.sort(registredPlayers, new PlayerRankingComparator()); // Usa el comparador
+
+        System.out.println("\nPlayers ordered by ranking and name:");
         for (Player player : registredPlayers) {
             System.out.println(player);
         }
-    }*/
+    }
 
     /**
      * Displays all teams sorted by their average player ranking in descending order.
      */
-    /*public void showTeamRanking() {
+    public void showTeamRanking() {
         Arrays.sort(registeredTeams, Comparator.comparingDouble(this::calculateTeamAverageRanking).reversed());
         for (Team team : registeredTeams) {
             System.out.println(team);
         }
-    }*/
+    }
 
     /**
      * method used to calculate the team average ranking
@@ -132,5 +140,53 @@ public class TournamentManager
             }
         }
         return count > 0 ? totalRanking / count : 0;
+    }
+
+    /**
+     *
+     */
+    public void showTournamentsOrderedByName() {
+        Arrays.sort(tournaments, new TournamentNameComparator());
+
+        System.out.println("\nTournaments ordered by name:");
+        for (Tournament tournament : tournaments) {
+            System.out.println(tournament);
+        }
+    }
+
+    /**
+     *
+     * @param sc
+     */
+    public void inputResult(Scanner sc) {
+        System.out.println("Pending Matches:");
+        for (int i = 0; i < matches.length; i++) {
+            if (matches[i].getResult().equals("Pending")) {
+                System.out.println(i + 1 + ". " + matches[i]);
+            }
+        }
+
+
+        System.out.print("Enter match number to update: ");//-->HERE THE USER IS ASKED TO ENTER A NAME
+        int matchNumber = sc.nextInt() - 1;
+
+        if (matchNumber >= 0 && matchNumber < matches.length && matches[matchNumber].getResult().equals("Pending")) {
+            System.out.print("Enter result (e.g., 'Player1 wins'): ");//-->REQUEST THE RESULT OF THE MATXH
+            sc.nextLine(); //--> HERE CLEAN THE BUFFER
+            String result = sc.nextLine();
+            matches[matchNumber].setResult(result);
+            System.out.println("Result updated: " + matches[matchNumber]);
+        } else {
+            System.out.println("Invalid match number or match already updated.");
+        }
+    }
+
+
+    public void showMatchesOrderedByTournamentName() {
+        Arrays.sort(matches, Comparator.comparing(match -> match.getTournament().getName()));
+        System.out.println("\nMatches ordered by Tournament Name:");
+        for (Match match : matches) {
+            System.out.println(match);
+        }
     }
 }
