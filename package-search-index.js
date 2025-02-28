@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"tournament.data"},{"l":"tournament.Exceptions"},{"l":"tournament.main"}];updateSearchResults();
